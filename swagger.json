@@ -12,28 +12,11 @@
     "http"
   ],
   "paths": {
-    "/": {
-      "get": {
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
     "/teachers/": {
       "get": {
+        "tags": [
+          "Teachers"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -42,6 +25,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Teachers"
+        ],
         "description": "",
         "parameters": [
           {
@@ -93,6 +79,9 @@
     },
     "/teachers/{id}": {
       "get": {
+        "tags": [
+          "Teachers"
+        ],
         "description": "",
         "parameters": [
           {
@@ -117,6 +106,9 @@
     },
     "/students/": {
       "get": {
+        "tags": [
+          "Students"
+        ],
         "description": "",
         "responses": {
           "200": {
@@ -128,6 +120,9 @@
         }
       },
       "post": {
+        "tags": [
+          "Students"
+        ],
         "description": "",
         "parameters": [
           {
@@ -176,6 +171,9 @@
     },
     "/students/{id}": {
       "get": {
+        "tags": [
+          "Students"
+        ],
         "description": "",
         "parameters": [
           {
@@ -198,5 +196,15 @@
         }
       }
     }
-  }
+  },
+  "tags": [
+    {
+      "name": "Teachers",
+      "description": "Endpoints related to teacher actions"
+    },
+    {
+      "name": "Students",
+      "description": "Endpoints related to student actions"
+    }
+  ]
 }
