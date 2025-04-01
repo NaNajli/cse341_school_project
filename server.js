@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const { initializeDB } = require("./data/database.js");
 const port = process.env.PORT || 3000;
 
@@ -18,6 +19,7 @@ app
     res.setHeader("Acces-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
     next();
 })
+.use(cors())
 .use('/', require('./routes/index.js'));
 
 app.listen(port , ()=> { 
