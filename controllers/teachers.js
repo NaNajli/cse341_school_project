@@ -7,7 +7,7 @@ const { validationResult } = require("express-validator");
 
 
 const getAllteachers = async (req, res, next) =>{
-
+    //#swagger-tags['Teachers']
     try {
 
         const teachers = await Teacher.find()
@@ -20,7 +20,7 @@ const getAllteachers = async (req, res, next) =>{
 
 
 const getSingleTeacher = async (req, res, next) =>{
-    
+    //#swagger-tags['Teachers']
     if(!ObjectId.isValid(req.params.id)){
         return res.status(400).json({error: "Must use a valid id to find a teacher"});
 
@@ -43,25 +43,26 @@ const getSingleTeacher = async (req, res, next) =>{
 
 
 const createTeacher = async (req, res, next) =>{
-const errors = validationResult(req);
+    //#swagger-tags['Teachers']
+    const errors = validationResult(req);
+        
+    if(!errors.isEmpty()){
+        return res.status(400).json({errors: errors.array()});
+    }
 
- if(!errors.isEmpty()){
-    return res.status(400).json({errors: errors.array()});
- }
+        const {id, name, subject, email, phone, yearsOfExperience, address, isFullTime} = req.body;
 
-    const {id, name, subject, email, phone, yearsOfExperience, address, isFullTime} = req.body;
-
-try{
-    const newTeacher = new Teacher ({
-        id,
-        name,
-        subject,
-        email,
-        phone,
-        yearsOfExperience,
-        address,
-        isFullTime
-    });
+    try{
+        const newTeacher = new Teacher ({
+            id,
+            name,
+            subject,
+            email,
+            phone,
+            yearsOfExperience,
+            address,
+            isFullTime
+        });
 
 
     await newTeacher.save();
