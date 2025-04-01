@@ -1,8 +1,10 @@
 const router = require('express').Router();
 
-router.get('/', (req , res)=>{res.send('School Project');});
+router.get('/', (req , res)=>{
+    //#swagger-tags['School Project']
+    res.send('School Project');});
 
-
+router.use('/', require('./swagger'));
 
 router.use("/teachers", require("./teachers.js"));
 
