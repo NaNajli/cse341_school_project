@@ -5,7 +5,7 @@
     "description": "API for control school infos",
     "version": "1.0.0"
   },
-  "host": "cse341-school-project.onrender.com",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": [
     "https",
@@ -14,9 +14,7 @@
   "paths": {
     "/teachers/": {
       "get": {
-        "tags": [
-          "Teachers"
-        ],
+        "tags": ["Teachers"],
         "description": "",
         "responses": {
           "200": {
@@ -25,9 +23,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Teachers"
-        ],
+        "tags": ["Teachers"],
         "description": "",
         "parameters": [
           {
@@ -79,9 +75,7 @@
     },
     "/teachers/{id}": {
       "get": {
-        "tags": [
-          "Teachers"
-        ],
+        "tags": ["Teachers"],
         "description": "",
         "parameters": [
           {
@@ -102,13 +96,96 @@
             "description": "Internal Server Error"
           }
         }
+      },
+      "put": {
+        "tags": ["Teachers"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "example": "any"
+                },
+                "name": {
+                  "example": "any"
+                },
+                "subject": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "phone": {
+                  "example": "any"
+                },
+                "yearsOfExperience": {
+                  "example": "any"
+                },
+                "address": {
+                  "example": "any"
+                },
+                "isFullTime": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Teachers"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
       }
     },
     "/students/": {
       "get": {
-        "tags": [
-          "Students"
-        ],
+        "tags": ["Students"],
         "description": "",
         "responses": {
           "200": {
@@ -120,9 +197,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Students"
-        ],
+        "tags": ["Students"],
         "description": "",
         "parameters": [
           {
@@ -171,9 +246,7 @@
     },
     "/students/{id}": {
       "get": {
-        "tags": [
-          "Students"
-        ],
+        "tags": ["Students"],
         "description": "",
         "parameters": [
           {
@@ -189,6 +262,88 @@
           },
           "400": {
             "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Students"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "example": "any"
+                },
+                "name": {
+                  "example": "any"
+                },
+                "classe": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "age": {
+                  "example": "any"
+                },
+                "enrollmentDate": {
+                  "example": "any"
+                },
+                "hasScholarship": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Students"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
