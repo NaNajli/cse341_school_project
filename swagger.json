@@ -5,7 +5,7 @@
     "description": "API for control school infos",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "cse341-school-project.onrender.com",
   "basePath": "/",
   "schemes": [
     "http",
