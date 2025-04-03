@@ -15,8 +15,10 @@ routes.get("/:id", studentsController.getSingleStudent);
 // #swagger.summary = 'Add a new student'
 routes.post("/", validateStudent, studentsController.createStudent);
 
+// #swagger.summary = 'Update existing student'
 routes.put("/:id", studentsController.updateStudent);
 
+// #swagger.summary = 'Delete existing student'
 routes.delete("/:id", studentsController.deleteStudent);
 
 

@@ -34,6 +34,7 @@ router.put(
   }
 );
 
+// #swagger.summary = 'Delete existing teacher'
 router.delete(
   '/:id',
   [
