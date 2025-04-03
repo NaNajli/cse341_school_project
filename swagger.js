@@ -6,7 +6,7 @@ const doc = {
         description: 'API for control school infos'
     },
     host: 'cse341-school-project.onrender.com',
-    schemes: ['https', 'http']
+    schemes: ['https']
 };
 
 const outputFile = './swagger.json';
