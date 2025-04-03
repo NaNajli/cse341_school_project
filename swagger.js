@@ -6,7 +6,7 @@ const doc = {
         description: 'API for control school infos'
     },
     host: 'localhost:3000',
-    schemes: ['https', 'http']
+    schemes: ['http', 'https']
 };
 
 const outputFile = './swagger.json';
