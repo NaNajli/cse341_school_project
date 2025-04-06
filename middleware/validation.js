@@ -13,5 +13,7 @@ const validateStudent = [
     body("hasScholarship").isBoolean().withMessage("hasScholarship must be a boolean"),
 ]
 
-module.exports = validateTeacher;
-module.exports = validateStudent;
+module.exports = [
+    validateTeacher,
+    validateStudent
+]

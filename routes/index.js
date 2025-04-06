@@ -10,6 +10,10 @@ router.use("/teachers", require("./teachers.js"));
 
 router.use("/students", require("./students.js"));
 
-// router.use("/students", require("./students"));
+router.use("/classes", require("./classes.js"));
+
+router.use("/books", require("./books.js"));
+
+
 
 module.exports = router;

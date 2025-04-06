@@ -2,9 +2,18 @@ const router = require("express").Router();
 const express = require("express");
 const { body, param, validationResult } = require('express-validator');
 
+//validate teacher
+const validateTeacher = [
+
+  body("email").isEmail().withMessage("Invalid email format"),
+  body("yearsOfExperience").isInt({min: 0}).withMessage("Must be a valid number, integer greater than 0"),
+
+];
+
+
 
 /* #swagger.tags = ['Teachers'] */
-const validateTeacher = require("../middleware/validation");
+
 
 const teachersController = require("../controllers/teachers");
 
