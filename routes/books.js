@@ -16,4 +16,6 @@ routes.get("/", booksController.getAllBooks);
 routes.get("/:id", booksController.getSingleBook);
 
 routes.post("/", validateBooks, booksController.createBook);
+routes.put("/:id", validateBooks, booksController.updateBook);
+routes.delete("/:id", booksController.deleteBook);
 module.exports = routes;

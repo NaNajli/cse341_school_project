@@ -14,5 +14,7 @@ routes.get("/", classesContrroller.getAllClasses);
 routes.get("/:id", classesContrroller.getSingleClass);
 
 routes.post("/",validateClasses, classesContrroller.createClass);
+routes.put("/:id",validateClasses, classesContrroller.updateClass);
+routes.delete("/:id", classesContrroller.deleteClass);
 
 module.exports = routes;

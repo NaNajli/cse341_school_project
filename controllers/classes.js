@@ -64,8 +64,74 @@ const createClass = async (req, res) =>{
     }
 }
 
+const updateClass = async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    const { id, name, teacher, students, schedule, room, subject, year } = req.body;
+    const classId = req.params.id;
+
+    try {
+        const updatedClass = await Class.findOneAndUpdate(
+            { _id: classId },
+            {
+                id,
+                name,
+                teacher,
+                students,
+                schedule,
+                room,
+                subject,
+                year
+            },
+            { new: true, runValidators: true }
+        );
+
+        if (!updatedClass) {
+            return res.status(404).json({ error: 'Class not found' });
+        }
+
+        res.status(200).json(updatedClass);
+    } catch (error) {
+        res.status(500).json({ 
+            error: 'Something went wrong with updating this class', 
+            details: error.message 
+        });
+    }
+};
+
+const deleteClass = async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    const classId = req.params.id;
+
+    try {
+        const result = await Class.findOneAndDelete({ _id: classId });
+
+        if (!result) {
+            return res.status(404).json({ error: 'Class not found' });
+        }
+
+        res.status(204).send();
+    } catch (error) {
+        res.status(500).json({ 
+            error: 'Something went wrong with deleting this class', 
+            details: error.message 
+        });
+    }
+};
+
 module.exports = {
     getAllClasses,
     getSingleClass,
-    createClass
+    createClass,
+    updateClass,
+    deleteClass
 }

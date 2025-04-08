@@ -61,8 +61,74 @@ const createBook = async (req, res) =>{
     }
 }
 
+const updateBook = async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    const { id, title, author, publishedYear, availableCopies, category, totalCopies, isDigitalAvailable } = req.body;
+    const bookId = req.params.id;
+
+    try {
+        const updatedBook = await Book.findOneAndUpdate(
+            { _id: bookId },
+            {
+                id,
+                title,
+                author,
+                publishedYear,
+                availableCopies,
+                category,
+                totalCopies,
+                isDigitalAvailable
+            },
+            { new: true, runValidators: true }
+        );
+
+        if (!updatedBook) {
+            return res.status(404).json({ error: 'Book not found' });
+        }
+
+        res.status(200).json(updatedBook);
+    } catch (error) {
+        res.status(500).json({ 
+            error: 'Something went wrong with updating this book', 
+            details: error.message 
+        });
+    }
+};
+
+const deleteBook = async (req, res) => {
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
+    const bookId = req.params.id;
+
+    try {
+        const result = await Book.findOneAndDelete({ _id: bookId });
+
+        if (!result) {
+            return res.status(404).json({ error: 'Book not found' });
+        }
+
+        res.status(204).send();
+    } catch (error) {
+        res.status(500).json({ 
+            error: 'Something went wrong with deleting this book', 
+            details: error.message 
+        });
+    }
+};
+
 module.exports = {
     getAllBooks,
     getSingleBook,
-    createBook
+    createBook,
+    updateBook,
+    deleteBook
 }
