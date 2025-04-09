@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const express = require("express");
 const { body, param, validationResult } = require('express-validator');
-
+const {isAuthenticated} = require('../middleware/authenticate')
 //validate teacher
 const validateTeacher = [
 
@@ -24,11 +24,11 @@ router.get("/", teachersController.getAllteachers);
 router.get("/:id", teachersController.getSingleTeacher);
 
 // #swagger.summary = 'Add a new teacher'
-router.post("/", validateTeacher, teachersController.createTeacher);
+router.post("/", isAuthenticated, validateTeacher, teachersController.createTeacher);
 
 // #swagger.summary = 'Update existing teacher'
 router.put(
-  '/:id',
+  '/:id', isAuthenticated,
   [
     param('id')
       .isMongoId()
@@ -45,7 +45,7 @@ router.put(
 
 // #swagger.summary = 'Delete existing teacher'
 router.delete(
-  '/:id',
+  '/:id', isAuthenticated,
   [
     param('id')
       .isMongoId()
