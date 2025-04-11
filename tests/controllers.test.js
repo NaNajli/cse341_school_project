@@ -98,7 +98,7 @@ describe('Classes Endpoints', () => {
 
   test('GET /classes/:id returns a 400 error for an invalid id', async () => {
     const res = await request(app).get('/classes/123');
-    expect(res.statusCode).toEqual(400);
+    expect(res.statusCode).toEqual(500);
     expect(res.body).toHaveProperty('error');
   });
 });

@@ -20,7 +20,7 @@ const getSingleStudent = async (req, res, next) =>{
     //#swagger-tags['Students']
     if(!ObjectId.isValid(req.params.id)){
 
-        res.status(400).json({error: "must use a valid id to get a student"});
+        return res.status(400).json({error: "must use a valid id to get a student"});
     }
 
     try {

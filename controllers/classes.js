@@ -28,7 +28,7 @@ const getSingleClass = async (req, res) =>{
         res.status(200).json(classe);
 
     } catch (error) {
-        res.status(500).json({error: "Something went wrong with getting this class", error});
+        return res.status(500).json({error: "Something went wrong with getting this class", error});
 
     }
 }
