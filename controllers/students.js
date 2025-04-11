@@ -30,7 +30,7 @@ const getSingleStudent = async (req, res, next) =>{
 
         res.status(200).json(student);
     } catch (error) {
-       res.status(500).json({error: "Something went wrong with getting this student", error}) 
+       return res.status(500).json({error: "Something went wrong with getting this student", error}) 
     }
 }
 
