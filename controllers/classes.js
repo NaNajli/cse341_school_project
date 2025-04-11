@@ -15,21 +15,18 @@ const getAllClasses =  async (req, res) =>{
 
 
 const getSingleClass = async (req, res) =>{
-    
     if(!ObjectId.isValid(req.params.id)){
-        res.status(400).json({error: "must use a valid id to get a class"})
+        return res.status(400).json({error: "must use a valid id to get a class"})
     }
-    
+
     try {
         const classId = req.params.id;
 
         const classe = await Class.findById(classId);
 
         res.status(200).json(classe);
-
     } catch (error) {
-        res.status(500).json({error: "Something went wrong with getting this class", error});
-
+        return res.status(500).json({error: "Something went wrong with getting this class", error});
     }
 }
 

@@ -20,7 +20,7 @@ const getSingleStudent = async (req, res, next) =>{
     //#swagger-tags['Students']
     if(!ObjectId.isValid(req.params.id)){
 
-        res.status(400).json({error: "must use a valid id to get a student"});
+        return res.status(400).json({error: "must use a valid id to get a student"});
     }
 
     try {
@@ -30,7 +30,7 @@ const getSingleStudent = async (req, res, next) =>{
 
         res.status(200).json(student);
     } catch (error) {
-       res.status(500).json({error: "Something went wrong with getting this student", error}) 
+       return res.status(500).json({error: "Something went wrong with getting this student", error}) 
     }
 }
 
